@@ -1,0 +1,15 @@
+# Matlab like prompt
+PS1(">> ")
+
+# Octave working directory
+# cd /some/directory
+
+#Clear the startup screen
+clc;
+
+# Use vim as editor
+
+#edit mode sync
+#edit home .
+#edit editor 'vim > /dev/tty 2>&1 < /dev/tty %s'
+EDITOR("vim")
