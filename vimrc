@@ -159,3 +159,6 @@ set expandtab
 
 " duplicate cscope database error...please go away
 set nocscopeverbose
+
+" show tabs
+set list listchars=tab:>-
