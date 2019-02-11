@@ -52,9 +52,6 @@ if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
 
-"source ${VIMRUNTIME}/mswin.vim
-
-"behave mswin
 colorscheme torte
 
 " Map leader to ','
@@ -73,6 +70,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'tpope/vim-fugitive'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -127,6 +125,18 @@ nmap <leader>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 " For DOS line endings
 :nnoremap <leader>dos :e ++ff=dos<cr>
 
+" Resize split windows
+:nnoremap <leader>+     :resize +5<cr>
+:nnoremap <leader>-     :resize -5<cr>
+:nnoremap <leader>>     :vertical resize +5<cr>
+:nnoremap <leader><     :vertical resize -5<cr>
+
+" Git blame
+:nnoremap <leader>gbl   :Gblame<cr>
+
+" git show through fugitive
+nmap <leader>gs :Git show <C-R>=expand("<cword>")<CR><CR>
+
 "FZF
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -142,3 +152,10 @@ set tw=120 "Wrap lines longer than 120 characters
 augroup filetypedetect
 	au! BufRead,BufNewFile *.m,*.oct set filetype=octave
 augroup END
+
+" This is getting turned off by one of the above packages
+" will debug later...for now turn ON
+set expandtab
+
+" duplicate cscope database error...please go away
+set nocscopeverbose
